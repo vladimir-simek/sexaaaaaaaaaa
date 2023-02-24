@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: Vladimír Šimek
+  Date: 2/24/2023
+  Time: 10:45 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>Twitter</title>
+</h:head>
+
+<h:body>
+    <h:form method="post">
+        Author: <h:inputText required="true" value="#{twitter.author}"/>
+        <br/>
+        <br/>
+        Content: <h:inputText required="true" value="#{twitter.content}"/>
+        <br/>
+        <br/>
+
+        <br/>
+        <br/>
+        <h:commandButton value="Submit" action="#{twitterBeans.creatTweet(twitter.content, twitter.author)}"/>
+    </h:form>
+
+    <div class="container">
+        <div class="d-flex">
+            <table class="table">
+                <thead>w
+                <tr class="table sticky-top">
+                    <th scope="col">Tweet</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Likes</th>
+                    <th scope="col">Created at</th>
+                    <th scope="col">Updated at</th>
+                </tr>
+                </thead>
+                <tbody>
+                <ui:repeat value="#{twitterBeans.tweets}"  var="tweets" varStatus="i">
+                    <tr>
+                        <th scope="row">#{"-"}</th>
+                        <td>#{tweets.author}</td>
+                        <td>#{tweets.content}</td>
+                        <td>#{tweets.likes}</td>
+                        <td>#{tweets.created_at}</td>
+                        <td>#{tweets.updated_at}</td>
+                    </tr>
+                </ui:repeat>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div><ui:repeat value="#{java.prcatKods}" var="prcatKod" varStatus="i">
+        <h4>
+            #{prcatKods.name}
+        </h4>
+    </ui:repeat></div>
+
+</h:body>
+
+</html>
